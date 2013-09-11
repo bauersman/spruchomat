@@ -4,6 +4,13 @@ Spruchomat::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  resources :runs do
+    member do
+      post :answer
+    end
+  end
+
   # root 'welcome#index'
 
   # Example of regular route:

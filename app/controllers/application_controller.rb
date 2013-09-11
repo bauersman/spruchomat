@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     @current_session ||= Session.find_or_create_by_uuid(session['uuid'])
     session['uuid'] = @current_session.uuid
   end
+
+  def parties
+    %w(SPD CSU Die\ Partei Piratenpartei Graue\ Panther)
+  end
 end

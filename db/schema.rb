@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911110338) do
+ActiveRecord::Schema.define(version: 20130911120748) do
+
+  create_table "runs", force: true do |t|
+    t.integer  "session_id"
+    t.string   "extid"
+    t.string   "state"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "runs", ["session_id"], name: "index_runs_on_session_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "uuid"

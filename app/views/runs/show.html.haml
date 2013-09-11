@@ -1,0 +1,24 @@
+.progress.progress-blub.well
+  .bar{style: "width: #{@run.progress_percent}%"}
+
+- if @run.finished?
+
+  %h1 Fertig! Deine Wahl:
+
+  %table.table
+    %tr
+      %th Plakattext
+      %th Antwort
+      %th Richtige Antwort
+
+    - @run.questions.count.times do |idx|
+      %tr
+        %td= @run.questions[idx]
+        %td= @run.answers[idx]
+        %td ÖDP
+
+- else
+  %h2= @run.current_question
+
+  - controller.parties.each do |party|
+    %button.btn= link_to party, answer_run_path(answer: party), method: :post
