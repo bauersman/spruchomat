@@ -12,7 +12,7 @@ ActiveAdmin.register Party do
     f.inputs "Party Details" do
       f.input :name
       f.input :slug
-      f.text :description
+      f.input :description
       f.input :homepage
     end
     f.actions
