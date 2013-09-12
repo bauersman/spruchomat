@@ -33,10 +33,9 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'debugger'
+  gem 'capistrano'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+group :production do
+  gem 'passenger'
+end
