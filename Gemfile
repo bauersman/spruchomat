@@ -1,15 +1,18 @@
 source 'https://rubygems.org'
 
+# backend
 gem 'rails', '4.0.0'
 gem 'mysql2'
+gem 'unicorn'
+gem 'haml'
+gem 'haml-rails'
+gem 'friendly_id', github: 'norman/friendly_id', branch: '5.0-stable'
+
+# frontend
 #gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'unicorn'
-gem 'haml'
-gem 'haml-rails'
-
 #gem 'less-rails-bootstrap'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'

@@ -17,6 +17,14 @@ GIT
       ransack (>= 1.0.0)
       sass-rails (>= 3.2.0)
 
+GIT
+  remote: git://github.com/norman/friendly_id.git
+  revision: 2d1dbe62eb92e4da129f813bf37e0f4ff3fba6d2
+  branch: 5.0-stable
+  specs:
+    friendly_id (5.0.0.rc2)
+      activerecord (~> 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -220,6 +228,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   debugger
+  friendly_id!
   haml
   haml-rails
   jbuilder (~> 1.2)

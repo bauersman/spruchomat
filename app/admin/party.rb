@@ -1,16 +1,18 @@
 ActiveAdmin.register Party do
   index do
     column :name
+    column :short_name
     column :slug
     column :homepage
     default_actions
   end
 
-  filter :name
+  filter [:name, :short_name]
 
   form do |f|
     f.inputs "Party Details" do
       f.input :name
+      f.input :short_name
       f.input :slug
       f.input :description
       f.input :homepage
@@ -20,7 +22,7 @@ ActiveAdmin.register Party do
 
   controller do
     def permitted_params
-      params.permit party: [:name, :slug, :description, :homepage]
+      params.permit party: [:name, :short_name, :slug, :description, :homepage]
     end
   end
 end
