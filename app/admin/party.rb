@@ -21,6 +21,10 @@ ActiveAdmin.register Party do
   end
 
   controller do
+    def scoped_collection
+      Party.friendly
+    end
+
     def permitted_params
       params.permit party: [:name, :short_name, :slug, :description, :homepage]
     end
