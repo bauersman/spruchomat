@@ -2,10 +2,10 @@ class Party < ActiveRecord::Base
   validates :name, presence: true
 
   include FriendlyId
-  friendly_id :slug_candidates, use: :slugged
+  friendly_id :display_name, use: :slugged
 
-  def slug_candidates
-    short_name.present? ? :short_name : :name
+  def display_name
+    short_name.present? ? short_name : name
   end
 
   def should_generate_new_friendly_id?
