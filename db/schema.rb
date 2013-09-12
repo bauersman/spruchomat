@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130912170112) do
+ActiveRecord::Schema.define(version: 20130912173832) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20130912170112) do
     t.datetime "updated_at"
   end
 
+  add_index "runs", ["extid"], name: "index_runs_on_extid", unique: true, using: :btree
   add_index "runs", ["session_id"], name: "index_runs_on_session_id", using: :btree
 
   create_table "sessions", force: true do |t|

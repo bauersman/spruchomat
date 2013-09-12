@@ -1,7 +1,7 @@
 class RunsController < ApplicationController
   attr_reader :run
 
-  before_filter :load_run, only: [:show, :answer]
+  before_filter :set_run, only: [:show, :answer]
 
   def index
   end
@@ -22,7 +22,7 @@ class RunsController < ApplicationController
 
   private
 
-  def load_run
-    @run = Run.find(params[:id])
+  def set_run
+    @run = Run.friendly.find(params[:id])
   end
 end
