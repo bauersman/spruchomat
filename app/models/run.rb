@@ -11,24 +11,41 @@ class Run < ActiveRecord::Base
   include FriendlyId
   friendly_id :extid
 
-  def questions
-    data[:questions]
+  def poster_ids
+    data[:poster_ids]
   end
 
-  def answers
-    data[:answers]
+  def answer_ids
+    data[:answer_ids]
   end
 
-  def current_question
-    data[:questions][data[:answers].count]
+  def answer!(party_id)
+    data[:answer_ids] << party_id
+    save!
+  end
+
+  def correct_answers_count
+    count = 0
+    poster_ids.map{|id| Poster.find(id).party.slug}.each_with_index do |correct_slug, idx|
+      count += 1 if answer_ids[idx] == correct_slug
+    end
+    count
+  end
+
+  def current_poster
+    Poster.find(poster_ids[answer_ids.count])
   end
 
   def finished?
-    data[:answers].count >= data[:questions].count
+    answer_ids.count >= poster_ids.count
+  end
+
+  def progress_numbers
+    "#{answer_ids.count}/#{poster_ids.count}"
   end
 
   def progress_percent
-    answers.count * 100 / questions.count
+    answer_ids.count * 100 / poster_ids.count
   end
 
   private
@@ -44,15 +61,12 @@ class Run < ActiveRecord::Base
   end
 
   def setup_data
-    data[:questions] = generate_questions
-    data[:answers] = []
+    data[:poster_ids] = generate_posters
+    data[:answer_ids] = []
   end
 
-  def generate_questions
-    [
-      "Wer hat an der Uhr gedreht?",
-      "Spitzensteuersatz für Geringverdiener!"
-    ]
+  def generate_posters
+    Poster.pluck(:id)
   end
 
 end

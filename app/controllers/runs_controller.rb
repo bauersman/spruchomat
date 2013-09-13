@@ -15,8 +15,7 @@ class RunsController < ApplicationController
   end
 
   def answer
-    @run.data[:answers] << params[:answer]
-    @run.save
+    @run.answer!(params[:answer])
     redirect_to @run
   end
 

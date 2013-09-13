@@ -26,7 +26,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Spruchomat
+          %a.brand(href="/") Spruchomat
           .container.nav-collapse
             %ul.nav
               %li= link_to "Start", new_run_path
@@ -34,15 +34,9 @@
     .container-fluid
 
       .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 2", "#"
-              %li= link_to "Link 3", "#"
-        .span9
+        .span12
           = bootstrap_flash
           = yield
-    
+
       %footer
         %p &copy; Company 2013

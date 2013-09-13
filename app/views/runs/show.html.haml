@@ -1,24 +1,45 @@
-.progress.progress-blub.well
-  .bar{style: "width: #{@run.progress_percent}%"}
+.well.well-small
+  .progress-numbers.text-center
+    %strong= @run.progress_numbers
+  .progress.progress-foo
+    .bar{style: "width: #{@run.progress_percent}%"}
 
 - if @run.finished?
 
-  %h1 Fertig! Deine Wahl:
+  %h2= "Richtige Antworten: #{@run.correct_answers_count}"
+
+  .row-fluid
+    %ul.thumbnails
+      - @run.poster_ids.count.times do |idx|
+        - poster = Poster.find(@run.poster_ids[idx])
+        %li.span4
+          .thumbnail
+            = image_tag poster.url, "data-src" => 'holder.js/120x160'
+            %h3= poster.text
+            %dl
+              %dt Deine Antwort
+              %dd= Party.friendly.find(@run.answer_ids[idx]).display_name
+              %dt Richtige Antwort
+              %dd= poster.party.display_name
 
   %table.table
     %tr
       %th Plakattext
       %th Antwort
       %th Richtige Antwort
+      %th Poster
 
-    - @run.questions.count.times do |idx|
+    - @run.poster_ids.count.times do |idx|
+      - poster = Poster.find(@run.poster_ids[idx])
       %tr
-        %td= @run.questions[idx]
-        %td= @run.answers[idx]
-        %td ÖDP
+        %td= poster.text
+        %td= poster.party.display_name
+        %td= Party.friendly.find(@run.answer_ids[idx]).display_name
+        %td= image_tag poster.url.thumb
 
 - else
-  %h2= @run.current_question
+  %h3= @run.current_poster.text
 
-  - controller.parties.each do |party|
-    %button.btn= link_to party, answer_run_path(answer: party), method: :post
+  %p
+  - Party.all.each do |party|
+    = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn'
