@@ -4,10 +4,9 @@ Spruchomat::Application.routes.draw do
 
   root 'home#index'
 
-  resources :parties
-  resources :posters
+  resources :parties, only: %w(index show)
 
-  resources :runs do
+  resources :runs, only: %w(new show) do
     member do
       post :answer
     end

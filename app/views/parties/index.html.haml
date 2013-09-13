@@ -1,0 +1,10 @@
+%table.table
+  %tr
+    %th Name
+    %th Kürzel
+    %th Homepage
+  - @parties.each do |party|
+    %tr
+      %td= link_to party.name, party
+      %td= party.short_name
+      %td= link_to party.homepage, party.homepage
