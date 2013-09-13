@@ -5,6 +5,10 @@ ActiveAdmin.register Poster do
     default_actions
   end
 
+  index as: :grid, default: true do |poster|
+    link_to(image_tag(poster.url.thumb), admin_poster_path(poster))
+  end
+
   form(html: {multipart: true}) do |f|
     f.inputs "Poster Details" do
       f.input :url, as: :file

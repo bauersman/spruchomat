@@ -8,6 +8,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'friendly_id', github: 'norman/friendly_id', branch: '5.0-stable'
 gem 'carrierwave'
+gem 'mini_magick'
 
 # frontend
 #gem 'sass-rails', '~> 4.0.0'
