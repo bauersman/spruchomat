@@ -5,9 +5,9 @@ ActiveAdmin.register Poster do
     default_actions
   end
 
-  form do |f|
+  form(html: {multipart: true}) do |f|
     f.inputs "Poster Details" do
-      f.input :url
+      f.input :url, as: :file
       f.input :text
       f.input :party
     end
