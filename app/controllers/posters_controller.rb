@@ -1,0 +1,2 @@
+class PostersController < ApplicationController
+end

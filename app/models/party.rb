@@ -1,4 +1,6 @@
 class Party < ActiveRecord::Base
+  has_many :posters
+
   validates :name, presence: true
 
   include FriendlyId

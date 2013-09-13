@@ -5,6 +5,7 @@ Spruchomat::Application.routes.draw do
   root 'home#index'
 
   resources :parties
+  resources :posters
 
   resources :runs do
     member do
