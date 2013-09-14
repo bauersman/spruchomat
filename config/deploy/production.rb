@@ -1,5 +1,5 @@
 set :current_stage,  'production'
-set :deploy_to,      "/home/plakate/spruchomat/apps/#{application}-#{current_stage}"
+set :deploy_to,      "/home/plakate/apps/#{application}-#{current_stage}"
 set :domain,         "volans.uberspace.de"
 set :user,           "plakate"
 set :etc_path,       "/home/plakate/etc"
