@@ -66,7 +66,7 @@ class Run < ActiveRecord::Base
   end
 
   def generate_posters
-    Poster.pluck(:id)
+    Poster.pluck(:id).sample(10)
   end
 
 end
