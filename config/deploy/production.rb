@@ -4,7 +4,7 @@ set :domain,         "volans.uberspace.de"
 set :user,           "plakate"
 set :etc_path,       "/home/plakate/etc"
 set :passenger_port, "17321"
-set :passenger_cmd,  "#{bundle_cmd} exec passenger"
+set :passenger_cmd,  "TMPDIR=#{current_path}/tmp/ #{bundle_cmd} exec passenger"
 
 role :app, "volans.uberspace.de"
 role :web, "volans.uberspace.de"
