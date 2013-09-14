@@ -12,7 +12,7 @@ default_run_options[:shell] = '/bin/bash'
 set :bundle_cmd, 'source $HOME/.bash_profile && bundle'
 
 set :default_environment, {
-    'TMPDIR' => '#{current_path}/tmp/',
+    'TMPDIR' => "#{current_path}/tmp/",
 }
 
 namespace :deploy do
