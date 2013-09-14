@@ -13,7 +13,7 @@ set :bundle_cmd, 'source $HOME/.bash_profile && bundle'
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} &"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
@@ -28,7 +28,7 @@ namespace :deploy do
       fi
     CMD
 
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} &"
   end
 
   task :symlink_shared do
