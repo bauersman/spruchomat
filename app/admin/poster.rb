@@ -17,7 +17,7 @@ ActiveAdmin.register Poster do
       row :id
       row :party
       row :image do
-        image_tag(poster.url.thumb)
+        image_tag(poster.url)
       end
       row :text
       row :created_at
