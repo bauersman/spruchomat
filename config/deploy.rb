@@ -11,28 +11,24 @@ set :repository,      "https://github.com/bauersman/spruchomat.git"
 default_run_options[:shell] = '/bin/bash'
 set :bundle_cmd, 'source $HOME/.bash_profile && bundle'
 
-set :default_environment, {
-    'TMPDIR' => "#{current_path}/tmp/",
-}
-
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+    run "cd #{current_path} && TMPDIR=#{current_path}/tmp/ #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port}"
+    run "cd #{current_path} && TMPDIR=#{current_path}/tmp/ #{passenger_cmd} stop -p #{passenger_port}"
   end
 
   task :restart, :roles => :app, :except => { :no_release => true } do
     run <<-CMD
       if [[ -f #{current_path}/tmp/pids/passenger.#{passenger_port}.pid ]];
       then
-        cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port};
+        cd #{current_path} && TMPDIR=#{current_path}/tmp/ #{passenger_cmd} stop -p #{passenger_port};
       fi
     CMD
 
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+    run "cd #{current_path} && TMPDIR=#{current_path}/tmp/ #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
   end
 
   task :symlink_shared do
