@@ -9,18 +9,18 @@
   %h2= "Richtige Antworten: #{@run.correct_answers_count}"
 
   .row-fluid
-    %ul.thumbnails
-      - @run.poster_ids.count.times do |idx|
-        - poster = Poster.find(@run.poster_ids[idx])
-        %li.span4
-          .thumbnail
-            = image_tag poster.url, "data-src" => 'holder.js/120x160'
-            %h3= poster.text
-            %dl
-              %dt Deine Antwort
-              %dd= Party.friendly.find(@run.answer_ids[idx]).display_name
-              %dt Richtige Antwort
-              %dd= poster.party.display_name
+    - @run.result_list.each_slice(3) do |slice|
+      %ul.thumbnails
+        - slice.each do |result|
+          %li.span4
+            .thumbnail
+              = image_tag result[:poster].url, "data-src" => 'holder.js/120x160'
+              %h3= result[:poster].text
+              %dl
+                %dt Deine Antwort
+                %dd= result[:answered].display_name
+                %dt Richtige Antwort
+                %dd= result[:poster].party.display_name
 
   %table.table
     %tr

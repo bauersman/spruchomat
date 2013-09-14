@@ -48,6 +48,15 @@ class Run < ActiveRecord::Base
     answer_ids.count * 100 / poster_ids.count
   end
 
+  def result_list
+    poster_ids.each_with_index.map do |poster_id, idx|
+      {
+        poster: Poster.find(poster_id),
+        answered: Party.friendly.find(answer_ids[idx])
+      }
+    end
+  end
+
   private
 
   def generate_extid
