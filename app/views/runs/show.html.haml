@@ -23,7 +23,7 @@
         %td= result[:poster].party == result[:answered] ? 'Richtig' : 'Falsch'
 
 - else
-  %h3= find_and_preserve @run.current_poster.text
+  %h3= preserve(@run.current_poster.text)
 
   %p
   - Party.all.sort_by{|e| e[:short_name]}.each do |party|
