@@ -18,8 +18,8 @@
     - @run.result_list.each do |result|
       %tr
         %td= link_to result[:poster].text, result[:poster].url.w640.url
-        %td= result[:poster].party.display_name
         %td= result[:answered].display_name
+        %td= result[:poster].party.display_name
         %td= result[:poster].party == result[:answered] ? 'Richtig' : 'Falsch'
 
 - else
