@@ -26,5 +26,5 @@
   %h3= @run.current_poster.text
 
   %p
-  - Party.all.each do |party|
+  - Party.all.sort_by{|e| e[:short_name]}.each do |party|
     = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn'
