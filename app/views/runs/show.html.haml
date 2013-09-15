@@ -8,34 +8,19 @@
 
   %h2= "Richtige Antworten: #{@run.correct_answers_count}"
 
-  .row-fluid
-    - @run.result_list.each_slice(3) do |slice|
-      %ul.thumbnails
-        - slice.each do |result|
-          %li.span4
-            .thumbnail
-              = image_tag result[:poster].url, "data-src" => 'holder.js/120x160'
-              %h3= result[:poster].text
-              %dl
-                %dt Deine Antwort
-                %dd= result[:answered].display_name
-                %dt Richtige Antwort
-                %dd= result[:poster].party.display_name
-
   %table.table
     %tr
       %th Plakattext
       %th Antwort
       %th Richtige Antwort
-      %th Poster
+      %th Richtig/Falsch?
 
-    - @run.poster_ids.count.times do |idx|
-      - poster = Poster.find(@run.poster_ids[idx])
+    - @run.result_list.each do |result|
       %tr
-        %td= poster.text
-        %td= poster.party.display_name
-        %td= Party.friendly.find(@run.answer_ids[idx]).display_name
-        %td= image_tag poster.url.thumb
+        %td= link_to result[:poster].text, result[:poster].url.url
+        %td= result[:poster].party.display_name
+        %td= result[:answered].display_name
+        %td= result[:poster].party == result[:answered] ? 'Richtig' : 'Falsch'
 
 - else
   %h3= @run.current_poster.text
