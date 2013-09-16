@@ -7,7 +7,16 @@ class RunsController < ApplicationController
   end
 
   def new
+    start
+  end
+
+  def start
     @run = current_session.runs.create
+    redirect_to @run
+  end
+
+  def start_easy
+    @run = current_session.runs.create(easy: true)
     redirect_to @run
   end
 

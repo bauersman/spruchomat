@@ -3,6 +3,8 @@ class Party < ActiveRecord::Base
 
   validates :name, presence: true
 
+  scope :easy, -> { where(easymode: true) }
+
   include FriendlyId
   friendly_id :display_name, use: :slugged
 

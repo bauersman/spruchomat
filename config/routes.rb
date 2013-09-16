@@ -7,6 +7,10 @@ Spruchomat::Application.routes.draw do
   resources :parties, only: %w(index show)
 
   resources :runs, only: %w(new show) do
+    collection do
+      get :start, :start_easy
+    end
+
     member do
       post :answer
     end

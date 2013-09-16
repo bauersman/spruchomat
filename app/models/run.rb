@@ -8,6 +8,8 @@ class Run < ActiveRecord::Base
   before_create :setup_data
   before_create :generate_extid
 
+  attr_accessor :easy
+
   include FriendlyId
   friendly_id :extid
 
@@ -74,14 +76,21 @@ class Run < ActiveRecord::Base
     data[:answer_ids] = []
   end
 
-  def generate_posters
-    # pick 10 random posters
-    # Poster.pluck(:id).sample(10)
+  def generate_posters(amount=10)
+    parties = easy ? Party.easy : Party.all
+    parties.includes(:poster)
 
     # pick 10 random parties, then pick one random poster of each
-    Party.all.sample(10).map do |party|
-      party.poster_ids.sample
+    poster_ids = []
+    loop_count = 0
+    while poster_ids.count < amount && loop_count < 10
+      poster_ids += parties.sample(amount).map do |party|
+        party.poster_ids.sample
+      end
+      poster_ids.uniq!
+      loop_count += 1
     end
+    poster_ids.first(amount)
   end
 
 end
