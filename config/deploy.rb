@@ -14,25 +14,11 @@ set :rvm_ruby_string, "ruby-1.9.3@wahlplakatomat"
 set :rvm_autolibs_flag, "read-only"
 
 namespace :deploy do
-  task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} &"
-  end
-
-  task :stop, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port}"
-  end
-
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run <<-CMD
-      if [[ -f #{current_path}/tmp/pids/passenger.#{passenger_port}.pid ]];
-      then
-        cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port};
-      fi
-    CMD
-
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} &"
-  end
-
+ task :start do ; end
+ task :stop do ; end
+ task :restart, :roles => :app, :except => { :no_release => true } do
+   run "touch #{File.join(current_path,'tmp','restart.txt')}"
+ end
   task :symlink_shared do
     run "ln -nfs #{etc_path}/database.yml #{release_path}/config/database.yml"
   end
