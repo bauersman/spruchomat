@@ -3496,7 +3496,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar:after {
   clear: both;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .navbar {
     border-radius: 4px;
   }
