@@ -8,7 +8,7 @@
 
   %h2= "Richtige Antworten: #{@run.correct_answers_count}"
 
-  %table.table
+  %table.table.result-table
     %tr
       %th Plakattext
       %th Antwort
@@ -20,7 +20,11 @@
         %td= link_to simple_format(result[:poster].text), result[:poster].url.w640.url
         %td= result[:answered].display_name
         %td= result[:poster].party.display_name
-        %td= result[:poster].party == result[:answered] ? 'Richtig' : 'Falsch'
+        %td
+          - if result[:poster].party == result[:answered]
+            %i.icon-ok-circle.text-success
+          - else
+            %i.icon-ban-circle.text-error
 
 - else
   .poster-text= simple_format(@run.current_poster.text)
