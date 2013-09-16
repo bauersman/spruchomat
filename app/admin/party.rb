@@ -3,11 +3,10 @@ ActiveAdmin.register Party do
     column :name
     column :short_name
     column :slug
+    column :easymode
     column :homepage
     default_actions
   end
-
-  filter [:name, :short_name]
 
   form do |f|
     f.inputs "Party Details" do
