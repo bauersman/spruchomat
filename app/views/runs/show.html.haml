@@ -17,13 +17,13 @@
 
     - @run.result_list.each do |result|
       %tr
-        %td= link_to result[:poster].text, result[:poster].url.w640.url
+        %td= link_to simple_format(result[:poster].text), result[:poster].url.w640.url
         %td= result[:answered].display_name
         %td= result[:poster].party.display_name
         %td= result[:poster].party == result[:answered] ? 'Richtig' : 'Falsch'
 
 - else
-  %h3= preserve(@run.current_poster.text)
+  %h3= simple_format(@run.current_poster.text)
 
   %p
   - Party.all.sort_by{|e| e[:short_name]}.each do |party|
