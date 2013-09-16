@@ -87,7 +87,7 @@ class Run < ActiveRecord::Base
       poster_ids += parties.sample(amount).map do |party|
         party.poster_ids.sample
       end
-      poster_ids.uniq!
+      poster_ids = poster_ids.compact.uniq
       loop_count += 1
     end
     poster_ids.first(amount)

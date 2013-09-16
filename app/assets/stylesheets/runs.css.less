@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Less here: http://lesscss.org/
 
+@import "variables";
+
 .progress-numbers {
   margin-right: 10px;
   float: left;
@@ -13,7 +15,23 @@
 
 .party-select {
   &:first-child {
-    margin: 0
+    margin-left: 0;
   }
   margin-left: 5px;
+  margin-bottom: 5px;
+  text-decoration: none !important;
+  background-image: none;
+}
+
+.well {
+  background-color: @gray-lighter;
+}
+
+.bar.lavish {
+  background-color: @gray-dark;
+  background-image: none;
+}
+
+.navbar .nav li a {
+  padding: 15px;
 }

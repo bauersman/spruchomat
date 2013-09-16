@@ -2,7 +2,7 @@
   .progress-numbers.text-center
     %strong= @run.progress_numbers
   .progress.progress-foo
-    .bar{style: "width: #{@run.progress_percent}%"}
+    .bar.lavish{style: "width: #{@run.progress_percent}%"}
 
 - if @run.finished?
 
@@ -28,4 +28,4 @@
   %p
     - parties = @run.easymode? ? Party.easy : Party.all
     - parties.sort_by(&:display_name).each do |party|
-      = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn party-select'
+      = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn btn-primary party-select'
