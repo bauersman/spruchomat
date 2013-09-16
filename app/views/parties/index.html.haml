@@ -7,4 +7,4 @@
     %tr
       %td= link_to party.name, party
       %td= party.short_name
-      %td= link_to party.homepage, party.homepage
+      %td= link_to CGI.unescape(party.homepage), party.homepage
