@@ -35,7 +35,7 @@
         %td= result[:poster].party.display_name
 
 - else
-  .poster-text= simple_format(@run.current_poster.text)
+  .poster-text.centered= simple_format(@run.current_poster.text)
 
   .well.well-small.centered
     - parties = @run.easymode? ? Party.easy : Party.all
