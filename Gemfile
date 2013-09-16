@@ -41,3 +41,4 @@ end
 group :production do
   gem 'passenger'
 end
+gem 'rvm-capistrano'
