@@ -3,6 +3,7 @@ set :default_stage, "staging"
 
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
+require 'rvm/capistrano'
 
 set :application, "spruchomat"
 set :use_sudo, false
@@ -10,6 +11,8 @@ ssh_options[:compression] = "none"
 set :repository,      "https://github.com/bauersman/spruchomat.git"
 default_run_options[:shell] = '/bin/bash'
 set :bundle_cmd, 'source $HOME/.bash_profile && bundle'
+set :rvm_ruby_string, "ruby-1.9.3@wahlplakatomat"
+set :rvm_autolibs_flag, "read-only"
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
@@ -42,3 +45,7 @@ end
 
 after 'deploy:update_code', 'deploy:symlink_shared'
 after 'deploy:update_code', 'deploy:symlink_upload_dir'
+
+before 'deploy', 'rvm:install_rvm'  # install/update RVM
+before 'deploy', 'rvm:install_ruby' # install Ruby and create gemset (both if missing)
+after 'rvm:install_ruby', 'rvm:create_gemset'  # install gemset 
