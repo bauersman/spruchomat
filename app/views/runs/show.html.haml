@@ -17,7 +17,16 @@
 
     - @run.result_list.each do |result|
       %tr
-        %td= link_to simple_format(result[:poster].text), result[:poster].url.w640.url
+        %td
+          - lightbox_id = "lightbox-#{result[:poster].id}"
+          = link_to simple_format(result[:poster].text), "##{lightbox_id}", "data-toggle" => "lightbox"
+          .lightbox.fade{id: lightbox_id, tabindex: -1, role: 'dialog', "aria-hidden" => true, style: 'display:none'}
+            .lightbox-header
+              %button.close{"type" => "button", "data-dismiss"=>"lightbox", "aria-hidden" => true} &times;
+            .lightbox-content
+              =image_tag result[:poster].url.w640.url
+              .lightbox-caption
+                %p= result[:poster].text
         %td
           - if result[:poster].party == result[:answered]
             %i.icon-ok-circle.text-success
