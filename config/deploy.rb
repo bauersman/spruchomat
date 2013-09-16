@@ -46,6 +46,4 @@ end
 after 'deploy:update_code', 'deploy:symlink_shared'
 after 'deploy:update_code', 'deploy:symlink_upload_dir'
 
-before 'deploy', 'rvm:install_rvm'  # install/update RVM
-before 'deploy', 'rvm:install_ruby' # install Ruby and create gemset (both if missing)
-after 'rvm:install_ruby', 'rvm:create_gemset'  # install gemset 
+before 'deploy:setup', 'rvm:create_gemset' # only create gemset
