@@ -8,7 +8,7 @@
 
   %h2.centered= "Richtige Antworten: #{@run.correct_answers_count}"
 
-  %table.table.result-table.centered
+  %table.table.table-hover.result-table.centered
     %tr
       %th Plakattext
       %th
@@ -16,10 +16,10 @@
       %th Richtige Antwort
 
     - @run.result_list.each do |result|
-      %tr
+      - lightbox_id = "lightbox-#{result[:poster].id}"
+      %tr{"data-lightbox-id" => lightbox_id}
         %td
-          - lightbox_id = "lightbox-#{result[:poster].id}"
-          = link_to simple_format(result[:poster].text), "##{lightbox_id}", "data-toggle" => "lightbox"
+          = simple_format result[:poster].text
           .lightbox.fade{id: lightbox_id, tabindex: -1, role: 'dialog', "aria-hidden" => true, style: 'display:none'}
             .lightbox-content
               =image_tag result[:poster].url.w640.url, "data-dismiss" => "lightbox"

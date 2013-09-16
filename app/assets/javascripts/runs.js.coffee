@@ -5,3 +5,10 @@
 $ ->
   $('.party-select').click ->
     $('.party-select').attr('disabled', 'disabled')
+
+  $('.result-table tr').click (event) ->
+    lightboxId = $(event.target).parents('tr').data('lightbox-id')
+    $("##{lightboxId}").lightbox()
+
+  $('.lightbox').click (event) ->
+    event.stopPropagation()
