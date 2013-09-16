@@ -26,5 +26,5 @@
   %h3= simple_format(@run.current_poster.text)
 
   %p
-  - Party.all.sort_by(&:display_name).each do |party|
-    = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn'
+    - Party.all.sort_by(&:display_name).each do |party|
+      = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn party-select'
