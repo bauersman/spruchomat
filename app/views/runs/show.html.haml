@@ -1,9 +1,3 @@
-.well.well-small.centered
-  .progress-numbers.text-center
-    %strong= @run.progress_numbers
-  .progress.progress-foo
-    .bar.lavish{style: "width: #{@run.progress_percent}%"}
-
 - if @run.finished?
 
   %h2.centered= "Richtige Antworten: #{@run.correct_answers_count}"
@@ -35,6 +29,12 @@
         %td= result[:poster].party.display_name
 
 - else
+  .well.well-small.centered
+    .progress-numbers.text-center
+      %strong= @run.progress_numbers
+    .progress.progress-foo
+      .bar.lavish{style: "width: #{@run.progress_percent}%"}
+
   .poster-text.centered= simple_format(@run.current_poster.text)
 
   .well.well-small.centered
