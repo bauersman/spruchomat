@@ -77,7 +77,7 @@ class Run < ActiveRecord::Base
   end
 
   def generate_posters(amount=10)
-    parties = easy ? Party.easy : Party.all
+    parties = easymode? ? Party.easy : Party.all
     parties.includes(:poster)
 
     # pick 10 random parties, then pick one random poster of each

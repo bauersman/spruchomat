@@ -16,7 +16,7 @@ class RunsController < ApplicationController
   end
 
   def start_easy
-    @run = current_session.runs.create(easy: true)
+    @run = current_session.runs.create(easymode: true)
     redirect_to @run
   end
 

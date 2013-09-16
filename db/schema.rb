@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916125932) do
+ActiveRecord::Schema.define(version: 20130916133252) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20130916125932) do
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "easymode",   default: false
   end
 
   add_index "runs", ["extid"], name: "index_runs_on_extid", unique: true, using: :btree
