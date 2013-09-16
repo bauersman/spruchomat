@@ -9,7 +9,6 @@ set :application, "spruchomat"
 set :use_sudo, false
 ssh_options[:compression] = "none"
 set :repository,      "https://github.com/bauersman/spruchomat.git"
-default_run_options[:shell] = '/bin/bash'
 set :bundle_cmd, 'source $HOME/.bash_profile && bundle'
 set :rvm_ruby_string, "ruby-1.9.3@wahlplakatomat"
 set :rvm_autolibs_flag, "read-only"
