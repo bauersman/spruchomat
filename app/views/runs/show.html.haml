@@ -1,4 +1,4 @@
-.well.well-small
+.well.well-small.centered
   .progress-numbers.text-center
     %strong= @run.progress_numbers
   .progress.progress-foo
@@ -23,9 +23,9 @@
         %td= result[:poster].party == result[:answered] ? 'Richtig' : 'Falsch'
 
 - else
-  %h3= simple_format(@run.current_poster.text)
+  .poster-text= simple_format(@run.current_poster.text)
 
-  %p
+  .well.well-small.centered
     - parties = @run.easymode? ? Party.easy : Party.all
     - parties.sort_by(&:display_name).each do |party|
       = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn btn-primary party-select'
