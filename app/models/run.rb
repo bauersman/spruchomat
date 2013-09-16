@@ -75,7 +75,13 @@ class Run < ActiveRecord::Base
   end
 
   def generate_posters
-    Poster.pluck(:id).sample(10)
+    # pick 10 random posters
+    # Poster.pluck(:id).sample(10)
+
+    # pick 10 random parties, then pick one random poster of each
+    Party.all.sample(10).map do |party|
+      party.poster_ids.sample
+    end
   end
 
 end
