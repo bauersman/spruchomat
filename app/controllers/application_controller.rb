@@ -8,11 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :setup_session
 
   def setup_session
-    @current_session ||= ::Session.find_or_create_by_uuid(session['uuid'])
+    @current_session ||= ::Session.find_or_create_by(uuid: session['uuid'])
     session['uuid'] = @current_session.uuid
-  end
-
-  def parties
-    %w(SPD CSU Die\ Partei Piratenpartei Graue\ Panther)
   end
 end
