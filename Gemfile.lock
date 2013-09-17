@@ -37,6 +37,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    actionpack-action_caching (1.0.0)
+      actionpack (>= 4.0.0.beta, < 5.0)
     activemodel (4.0.0)
       activesupport (= 4.0.0)
       builder (~> 3.1.0)
@@ -87,6 +89,7 @@ GEM
     columnize (0.3.6)
     commonjs (0.2.7)
     daemon_controller (1.1.5)
+    dalli (2.6.4)
     debug_inspector (0.0.2)
     debugger (1.6.1)
       columnize (>= 0.3.1)
@@ -252,12 +255,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching
   activeadmin!
   better_errors
   binding_of_caller
   capistrano (= 2.13.5)
   carrierwave
   coffee-rails (~> 4.0.0)
+  dalli
   debugger
   friendly_id!
   haml

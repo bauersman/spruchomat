@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # backend
 gem 'rails', '4.0.0'
+gem 'actionpack-action_caching'
 gem 'mysql2'
 gem 'unicorn'
 gem 'haml'
@@ -9,6 +10,7 @@ gem 'haml-rails'
 gem 'friendly_id', github: 'norman/friendly_id', branch: '5.0-stable'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'dalli'
 
 # frontend
 #gem 'sass-rails', '~> 4.0.0'
