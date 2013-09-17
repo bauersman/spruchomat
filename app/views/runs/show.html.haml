@@ -13,7 +13,7 @@
       - lightbox_id = "lightbox-#{result[:poster].id}"
       %tr{"data-lightbox-id" => lightbox_id}
         %td
-          = simple_format result[:poster].text
+          = image_tag result[:poster].url.thumb.url, class: 'img-polaroid'
           .lightbox.fade{id: lightbox_id, tabindex: -1, role: 'dialog', "aria-hidden" => true, style: 'display:none'}
             .lightbox-content
               =image_tag result[:poster].url.w640.url, "data-dismiss" => "lightbox"
