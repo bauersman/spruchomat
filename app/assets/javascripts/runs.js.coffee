@@ -3,8 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #
 $ ->
-  $('.party-select').click ->
+  $('.party-select').click (event) ->
     $('.party-select').attr('disabled', 'disabled')
+    $(this).parents('form').submit()
 
   $('.result-table tr').click (event) ->
     lightboxId = $(event.target).parents('tr').data('lightbox-id')

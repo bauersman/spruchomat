@@ -41,5 +41,5 @@
     - cache(action_suffix: "parties-#{@run.easymode}") do
       - parties = @run.easymode? ? Party.easy : Party.all
       - parties.sort_by(&:display_name).each do |party|
-        = link_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn btn-primary party-select'
+        = button_to party.display_name, answer_run_path(answer: party), method: :post, class: 'btn btn-primary party-select'
 
