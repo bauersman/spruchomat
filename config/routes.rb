@@ -3,6 +3,7 @@ Spruchomat::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   root 'home#index'
+  get 'about', to: 'home#about'
 
   resources :parties, only: %w(index show)
 
