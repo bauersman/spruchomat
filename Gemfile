@@ -35,7 +35,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'debugger'
-  gem 'capistrano'
+  gem 'capistrano', '2.13.5'
 end
 
 group :production do
