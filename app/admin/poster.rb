@@ -1,4 +1,6 @@
 ActiveAdmin.register Poster do
+  config.per_page = 200
+
   index do
     column :image do |poster|
       image_tag(poster.url.thumb)
