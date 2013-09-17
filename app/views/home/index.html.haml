@@ -1,1 +1,10 @@
-%h1 Hello World!
+.jumbotron
+  %h1.centered Kennst Du sie alle?
+  %p
+    = image_tag 'mosaic_halbsepia_100pc.jpg', class: 'img-polaroid'
+
+  .row-fluid
+    .span6
+      = link_to "Leicht", start_easy_runs_path, class: 'btn btn-primary start-button'
+    .span6
+      = link_to "Schwer", start_runs_path, class: 'btn btn-primary start-button'

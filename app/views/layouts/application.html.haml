@@ -21,7 +21,7 @@
   %body
     .navbar.navbar-inverse.navbar-fluid-top
       .navbar-inner
-        .container-fluid
+        .container.container-fluid.centered
           %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
             %span.icon-bar
             %span.icon-bar
@@ -32,7 +32,7 @@
               %li= link_to "Schwer", start_runs_path
               %li= link_to "Parteien", parties_path
 
-    .container-fluid
+    .container.container-fluid.centered
 
       .row-fluid
         .span12
@@ -40,9 +40,8 @@
           = yield
 
       %footer
-        #center
-          %p
-            Der Wahlplakat-o-mat ist ein Projekt von #{ link_to 'Caspar Clemens Mierau', 'https://twitter.com/leitmedium/'} (Konzept, Technik) und #{ link_to 'Andreas Bauer', 'https://twitter.com/bauersman/'} (Entwicklung) | #{ link_to 'Quellcode', 'https://github.com/bauersman/spruchomat'} | #{ link_to 'Impressum', 'http://www.leitmedium.de/impressum/'} | #{ link_to image_tag( '//api.flattr.com/button/flattr-badge-large.png'), 'https://flattr.com/submit/auto?user_id=leitmedium&url=http%3A%2F%2Fwahlplakatomat.de'}
+        %p
+          Der Wahlplakat-o-mat ist ein Projekt von #{ link_to 'Caspar Clemens Mierau', 'https://twitter.com/leitmedium/'} (Konzept, Technik) und #{ link_to 'Andreas Bauer', 'https://twitter.com/bauersman/'} (Entwicklung) | #{ link_to 'Quellcode', 'https://github.com/bauersman/spruchomat'} | #{ link_to 'Impressum', 'http://www.leitmedium.de/impressum/'} | #{ link_to image_tag( '//api.flattr.com/button/flattr-badge-large.png'), 'https://flattr.com/submit/auto?user_id=leitmedium&url=http%3A%2F%2Fwahlplakatomat.de'}
 
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
