@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916133252) do
+ActiveRecord::Schema.define(version: 20130923113550) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -66,6 +66,19 @@ ActiveRecord::Schema.define(version: 20130916133252) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "questions", force: true do |t|
+    t.integer  "run_id"
+    t.integer  "poster_id"
+    t.integer  "answered_party_id"
+    t.integer  "position",          limit: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["answered_party_id"], name: "index_questions_on_answered_party_id", using: :btree
+  add_index "questions", ["poster_id"], name: "index_questions_on_poster_id", using: :btree
+  add_index "questions", ["run_id"], name: "index_questions_on_run_id", using: :btree
 
   create_table "runs", force: true do |t|
     t.integer  "session_id"

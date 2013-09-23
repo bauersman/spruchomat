@@ -2,6 +2,7 @@
 #
 class Run < ActiveRecord::Base
   belongs_to :session
+  has_many :questions
 
   serialize :data, HashWithIndifferentAccess
 
