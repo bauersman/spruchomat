@@ -22,6 +22,8 @@ gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'less-rails'
 
+gem 'counted_each'
+
 #activeadmin
 gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 
