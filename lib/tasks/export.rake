@@ -12,6 +12,7 @@ namespace :export do
     puts "exporting questions data to #{export_file}"
 
     CSV.open(export_file, 'wb') do |csv|
+      csv << %w(run_id ext_id poster_id poster_url party_id answered? answered_party_id) unless disable_header?
       Question.includes(:run, :poster).to_a.counted_each do |q|
         next if q.poster.blank?
         csv << [q.run_id, q.run.extid, q.poster_id, q.poster.url.url, q.poster.party_id, q.answered?, q.answered_party_id]
@@ -25,6 +26,7 @@ namespace :export do
     puts "exporting party data to #{export_file}"
 
     CSV.open(export_file, 'wb') do |csv|
+      csv << %w(party_id name num_posters shown_posters incorrect_answers correct_answers) unless disable_header?
       Party.includes(:posters).to_a.counted_each do |p|
         next if p.posters.blank?
 
@@ -35,5 +37,9 @@ namespace :export do
         csv << [p.id, p.display_name, p.posters.count, shown_questions.count, incorrect_answers, correct_answers]
       end
     end
+  end
+
+  def disable_header?
+    ENV['DISABLE_HEADER'] =~ /(yes|1)/
   end
 end
