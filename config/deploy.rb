@@ -5,7 +5,7 @@ require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 require 'rvm/capistrano'
 
-set :application, "spruchomat"
+set :application, "spruchomat_eu_2014"
 set :use_sudo, false
 ssh_options[:compression] = "none"
 set :repository,      "https://github.com/bauersman/spruchomat.git"
@@ -20,7 +20,7 @@ namespace :deploy do
    run "touch #{File.join(current_path,'tmp','restart.txt')}"
  end
   task :symlink_shared do
-    run "ln -nfs #{etc_path}/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{etc_path}/database_eu_2014.yml #{release_path}/config/database.yml"
   end
 
   task :symlink_upload_dir do
