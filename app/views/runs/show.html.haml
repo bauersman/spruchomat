@@ -8,20 +8,22 @@
     %h2.centered= "Richtige Antworten: #{@run.correct_answers_count}"
 
     .share-container
-      :javascript
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1409326556008483&version=v2.0";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'))
+      %span.share.share-fb(style="overflow:hidden; height: 30px; min-width: 60px;float: left;")
+        :javascript
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1409326556008483&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'))
 
-      .fb-share-button(data-width="200" data-type="button_count" data-lang="de")
+        .fb-share-button(data-width="200" data-type="button" data-lang="de")
 
-      %a.twitter-share-button(href="https://twitter.com/share" data-lang="de" data-hashtags="wahlplakatomat") Twittern
+      %span.share.share-twitter
+        %a.twitter-share-button(href="https://twitter.com/share" data-lang="de" data-count="none" data-hashtags="wahlplakatomat") Twittern
 
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     %table.table.table-hover.result-table.centered
       %tr
