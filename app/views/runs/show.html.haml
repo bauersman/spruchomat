@@ -5,7 +5,13 @@
 
 - if @run.finished?
   - cache do
-    %h2.centered= "Richtige Antworten: #{@run.correct_answers_count}"
+    .top-bar
+      %h2= "Richtige Antworten: #{@run.correct_answers_count}"
+      %span.restart(style="float:right;")
+        Neustart
+        = link_to 'Leicht', start_easy_runs_path
+        \/
+        = link_to 'Schwer', start_runs_path
 
     .share-container
       %span.share.share-fb
