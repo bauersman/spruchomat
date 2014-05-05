@@ -57,7 +57,8 @@
     .progress.progress-foo
       .bar.lavish{style: "width: #{@run.progress_percent}%"}
 
-  .poster-text.centered= simple_format(@run.current_poster.text)
+  .bubble.centered
+    .poster-text= simple_format(@run.current_poster.text)
 
   .well.well-small.centered
     - cache(action_suffix: "parties-#{@run.easymode}") do
