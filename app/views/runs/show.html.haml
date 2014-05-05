@@ -1,3 +1,8 @@
+- content_for :title, "Wahlplakat-o-mat: #{@run.correct_answers_count} Richtige!"
+- content_for :og_image
+- content_for :og_title, "Wahlplakat-o-mat: #{@run.correct_answers_count} Richtige!"
+- content_for :og_url, request.url
+
 - if @run.finished?
   - cache do
     %h2.centered= "Richtige Antworten: #{@run.correct_answers_count}"

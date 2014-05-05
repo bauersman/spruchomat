@@ -5,10 +5,10 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
 
-    %meta{property: "og:image", content: image_url('mosaic_halbsepia_100pc.jpg')}
-    %meta{property: "og:title", content: "Wahlplakat-o-mat"}
-    %meta{property: "og:description", content: "Wahlplakat-o-mat. Wie gut kennst du die Plakate zur Europawahl 2014?"}
-    %meta{property: "og:url", content: "http://eu2014.wahlplakatomat.de"}
+    %meta{property: "og:image", content: (content_for?(:og_image) ? yield(:og_image) : image_url('mosaic_halbsepia_100pc.jpg'))}
+    %meta{property: "og:title", content: (content_for?(:og_title) ? yield(:og_title) : "Wahlplakat-o-mat")}
+    %meta{property: "og:description", content: (content_for?(:og_description) ? yield(:og_description) : "Wahlplakat-o-mat. Wie gut kennst du die Plakate zur Europawahl 2014?")}
+    %meta{property: "og:url", content: (content_for?(:og_url) ? yield(:og_url) : "http://eu2014.wahlplakatomat.de")}
 
     %meta{name: "description", content: "Wahlplakat-o-mat. Wie gut kennst du die Plakate zur Europawahl 2014?"}
 
