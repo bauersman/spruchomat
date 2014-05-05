@@ -5,6 +5,6 @@ class HomeController < ApplicationController
   end
 
   def about
-    redirect_to 'http://www.leitmedium.de/2013/09/17/wahlplakate-raten-mit-dem-wahlplakatomat/'
+    redirect_to "http://www.leitmedium.de/2014/05/05/wahlplakate-raten-mit-dem-wahlplakat-o-mat-eu2014-edition/"
   end
 end
