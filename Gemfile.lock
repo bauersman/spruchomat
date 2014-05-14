@@ -151,7 +151,7 @@ GEM
       subexec (~> 0.2.1)
     minitest (4.7.5)
     multi_json (1.8.0)
-    mysql2 (0.3.13)
+    mysql2 (0.3.15)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -159,6 +159,7 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.8.0.218)
     orm_adapter (0.5.0)
     passenger (4.0.17)
       daemon_controller (>= 1.1.0)
@@ -275,6 +276,7 @@ DEPENDENCIES
   less-rails
   mini_magick
   mysql2
+  newrelic_rpm
   passenger
   rails (= 4.0.0)
   rspec

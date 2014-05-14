@@ -21,6 +21,7 @@ namespace :deploy do
  end
   task :symlink_shared do
     run "ln -nfs #{etc_path}/database_eu_2014.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{etc_path}/newrelic.yml #{release_path}/config/newrelic.yml"
   end
 
   task :symlink_upload_dir do
