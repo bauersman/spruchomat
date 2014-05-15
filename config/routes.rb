@@ -4,6 +4,7 @@ Spruchomat::Application.routes.draw do
 
   root 'home#index'
   get 'about', to: 'home#about'
+  get 'health', to: 'home#health'
 
   resources :parties, only: %w(index show)
 
